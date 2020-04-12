@@ -43,7 +43,7 @@ openssl req -new -config config/CA-csr.conf -out csr/CA.csr \
 
 Sign Intermediate CSR & Generate Intermediate Certificate
 ```
-openssl ca -config config/rootCA.conf -days 365 -create_serial \
+openssl ca -config config/rootCA.conf -days 730 -create_serial \
     -in csr/CA.csr -out certs/CA.crt -extensions ca_ext -notext
 ```
 
