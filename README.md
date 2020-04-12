@@ -9,12 +9,12 @@ Generate Root Certificate & Key
 ```
 openssl req -x509 -sha256 -days 3650 -newkey rsa:3072 \
     -config root-csr.conf -keyout private/rootCA_key.crt \
-    -out rootCA.crt
+    -out certs/rootCA.crt
 ```
 
 Verify Certificate
 ```
-openssl x509 -in rootCA.crt -text -noout
+openssl x509 -in certs/rootCA.crt -text -noout
 ```
 
 ## Intermediate CA Certificate
@@ -30,17 +30,17 @@ openssl req -new -config CA-csr.conf -out CA.csr \
 Sign Intermediate CSR & Generate Intermediate Certificate
 ```
 openssl ca -config rootCA.conf -days 365 -create_serial \
-    -in CA.csr -out CA.crt -extensions ca_ext -notext
+    -in CA.csr -out certs/CA.crt -extensions ca_ext -notext
 ```
 
 Certificate Chain into Linked File
 ```
-cat CA.crt rootCA.crt >CA.pem
+cat certs/CA.crt certs/rootCA.crt >certs/CA.pem
 ```
 
 Verify Certificate
 ```
-openssl x509 -in CA.crt -text -noout
+openssl x509 -in certs/CA.crt -text -noout
 ```
 
 ## Self Signed Certificate
@@ -56,7 +56,7 @@ openssl req -new -config san-csr.conf -out san.csr \
 Sign CSR & Generate Certificate
 ```
 openssl ca -config CA-san.conf -days 365 -create_serial \
-    -in san.csr -out san.crt -extensions leaf_ext -notext
+    -in san.csr -out certs/san.crt -extensions leaf_ext -notext
 ```
 
 ### SAN Domains Explained
@@ -64,12 +64,12 @@ The SAN DNS entries are based on the [HiJack Tracking](../hijack-tracking) repos
 
 Certificate Chain into Linked File
 ```
-cat san.crt CA.pem >san.pem
+cat certs/san.crt certs/CA.pem >certs/san.pem
 ```
 
 Verify Certificate
 ```
-openssl x509 -in san.crt -text -noout
+openssl x509 -in certs/san.crt -text -noout
 ```
 
 # Troubleshooting
