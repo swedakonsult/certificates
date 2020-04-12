@@ -1,6 +1,14 @@
 # Certificates
 Public Certificates, configuration, and direction
 
+## Repository Structure
+
+`certs` - contains all public certificates and certificate chains
+`config` - configuration files used by openssl
+`csr` - used to store certificate sign requests locally
+`db` - contains files used by openssl to sign certificates
+`private` - used to store certificates locally
+
 ## Root CA Certificate
 
 Based on https://help.f-secure.com/product.html?business/threatshield/latest/en/task_50407934989D4923AB76367EA0E627CA-threatshield-latest-en
@@ -8,7 +16,7 @@ Based on https://help.f-secure.com/product.html?business/threatshield/latest/en/
 Generate Root Certificate & Key
 ```
 openssl req -x509 -sha256 -days 3650 -newkey rsa:3072 \
-    -config root-csr.conf -keyout private/rootCA_key.crt \
+    -config config/root-csr.conf -keyout private/rootCA_key.crt \
     -out certs/rootCA.crt
 ```
 
@@ -23,14 +31,14 @@ Based on https://help.f-secure.com/product.html#business/threatshield/latest/en/
 
 Generate Intermediate CSR & Key
 ```
-openssl req -new -config CA-csr.conf -out CA.csr \
+openssl req -new -config config/CA-csr.conf -out csr/CA.csr \
         -keyout private/CA_key.crt
 ```
 
 Sign Intermediate CSR & Generate Intermediate Certificate
 ```
-openssl ca -config rootCA.conf -days 365 -create_serial \
-    -in CA.csr -out certs/CA.crt -extensions ca_ext -notext
+openssl ca -config config/rootCA.conf -days 365 -create_serial \
+    -in csr/CA.csr -out certs/CA.crt -extensions ca_ext -notext
 ```
 
 Certificate Chain into Linked File
@@ -49,14 +57,14 @@ Based on https://help.f-secure.com/product.html#business/threatshield/latest/en/
 
 Generate CSR & Key
 ```
-openssl req -new -config san-csr.conf -out san.csr \
+openssl req -new -config config/san-csr.conf -out csr/san.csr \
         -keyout private/san_key.crt
 ```
 
 Sign CSR & Generate Certificate
 ```
-openssl ca -config CA-san.conf -days 365 -create_serial \
-    -in san.csr -out certs/san.crt -extensions leaf_ext -notext
+openssl ca -config config/CA-san.conf -days 365 -create_serial \
+    -in csr/san.csr -out certs/san.crt -extensions leaf_ext -notext
 ```
 
 ### SAN Domains Explained

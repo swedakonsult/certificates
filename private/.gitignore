@@ -1,2 +1,4 @@
 # private certificates
 *.crt
+*.pem
+*.key
