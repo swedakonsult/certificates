@@ -4,10 +4,16 @@ Public Certificates, configuration, and direction
 ## Repository Structure
 
 `certs` - contains all public certificates and certificate chains
+
 `config` - configuration files used by openssl
+
 `csr` - used to store certificate sign requests locally
+
 `db` - contains files used by openssl to sign certificates
+
 `private` - used to store certificates locally
+
+# Generate Certificates
 
 ## Root CA Certificate
 
@@ -86,4 +92,5 @@ openssl x509 -in certs/san.crt -text -noout
 
 `4403822188:error:0DFFF097:asn1 encoding routines:CRYPTO_internal:string too long:/AppleInternal/BuildRoot/Library/Caches/com.apple.xbs/Sources/libressl/libressl-47.100.4/libressl-2.8/crypto/asn1/a_mbstr.c:156:maxsize=2`
 
+### Solution
 This was the result of the initial `req` for the Root CA Certificate because the configuration file states `prompt=0` while still having `_default = [default]` in the configuration.
