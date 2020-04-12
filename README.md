@@ -74,7 +74,7 @@ openssl ca -config config/CA-san.conf -days 365 -create_serial \
 ```
 
 ### SAN Domains Explained
-The SAN DNS entries are based on the [HiJack Tracking](../hijack-tracking) repository.
+The SAN DNS entries are based on the [HiJack Tracking](../../../hijack-tracking) repository.
 
 Certificate Chain into Linked File
 ```
