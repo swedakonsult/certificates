@@ -1,96 +1,105 @@
-# Certificates
-Public Certificates, configuration, and direction
+# Certificate Administration
 
-## Repository Structure
+Source: https://pki-tutorial.readthedocs.io/en/latest/advanced/
 
-`certs` - contains all public certificates and certificate chains
+## Before First Run
 
-`config` - configuration files used by openssl
-
-`csr` - used to store certificate sign requests locally
-
-`db` - contains files used by openssl to sign certificates
-
-`private` - used to store certificates locally
-
-# Generate Certificates
-
-## Root CA Certificate
-
-Based on https://help.f-secure.com/product.html?business/threatshield/latest/en/task_50407934989D4923AB76367EA0E627CA-threatshield-latest-en
-
-Generate Root Certificate & Key
+Create File Structure
 ```
-openssl req -x509 -sha256 -days 3650 -newkey rsa:3072 \
-    -config config/root-csr.conf -keyout private/rootCA_key.crt \
-    -out certs/rootCA.crt
+mkdir -p ca/root-ca/private ca/root-ca/db crl certs
+chmod 700 ca/root-ca/private
 ```
 
-Verify Certificate
+Initialize Required Files
 ```
-openssl x509 -in certs/rootCA.crt -text -noout
-```
-
-## Intermediate CA Certificate
-
-Based on https://help.f-secure.com/product.html#business/threatshield/latest/en/task_9EF132D90B9241268DF4EC8CA5FADBBF-threatshield-latest-en
-
-Generate Intermediate CSR & Key
-```
-openssl req -new -config config/CA-csr.conf -out csr/CA.csr \
-        -keyout private/CA_key.crt
+cp /dev/null ca/root-ca/db/root-ca.db
+cp /dev/null ca/root-ca/db/root-ca.db.attr
+echo 01 > ca/root-ca/db/root-ca.crt.srl
+echo 01 > ca/root-ca/db/root-ca.crl.srl
 ```
 
-Sign Intermediate CSR & Generate Intermediate Certificate
+## Root CA Certificate Generation
+
+Generate the CSR & Key
 ```
-openssl ca -config config/rootCA.conf -days 730 -create_serial \
-    -in csr/CA.csr -out certs/CA.crt -extensions ca_ext -notext
+openssl req -new \
+    -config etc/root-ca.conf \
+    -out ca/root-ca.csr \
+    -keyout ca/root-ca/private/root-ca.key.crt
 ```
 
-Certificate Chain into Linked File
+Generate the CSR With Existing Key
 ```
-cat certs/CA.crt certs/rootCA.crt >certs/CA.pem
-```
-
-Verify Certificate
-```
-openssl x509 -in certs/CA.crt -text -noout
+openssl req -new \
+    -config etc/root-ca.conf \
+    -out ca/root-ca.csr \
+    -key ca/root-ca/private/root-ca.key.crt
 ```
 
-## Self Signed Certificate
-
-Based on https://help.f-secure.com/product.html#business/threatshield/latest/en/task_D81B8959CD3643C5A9E8DD0E2A4EF32E-threatshield-latest-en
-
-Generate CSR & Key
+Sign the CA Certificate
 ```
-openssl req -new -config config/san-csr.conf -out csr/san.csr \
-        -keyout private/san_key.crt
-```
-
-Sign CSR & Generate Certificate
-```
-openssl ca -config config/CA-san.conf -days 365 -create_serial \
-    -in csr/san.csr -out certs/san.crt -extensions leaf_ext -notext
+openssl ca -selfsign \
+    -config etc/root-ca.conf \
+    -in ca/root-ca.csr \
+    -out ca/root-ca.crt \
+    -extensions root_ca_ext \
+    -enddate 20301231235958Z
 ```
 
-### SAN Domains Explained
-The SAN DNS entries are based on the [HiJack Tracking](../../../hijack-tracking) repository.
-
-Certificate Chain into Linked File
+Create a Revocation List
 ```
-cat certs/san.crt certs/CA.pem >certs/san.pem
-```
-
-Verify Certificate
-```
-openssl x509 -in certs/san.crt -text -noout
+openssl ca -gencrl \
+    -config etc/root-ca.conf \
+    -out crl/root-ca.crl
 ```
 
-# Troubleshooting
+Validate the Revocation List
+```
+openssl crl -in crl/root-ca.crl -noout -text
+```
 
-## Configuration file issue
+## TLS Intermediate CA Certificate Generation
 
-`4403822188:error:0DFFF097:asn1 encoding routines:CRYPTO_internal:string too long:/AppleInternal/BuildRoot/Library/Caches/com.apple.xbs/Sources/libressl/libressl-47.100.4/libressl-2.8/crypto/asn1/a_mbstr.c:156:maxsize=2`
+```
+mkdir -p ca/tls-ca/private ca/tls-ca/db crl certs
+chmod 700 ca/tls-ca/private
+```
 
-### Solution
-This was the result of the initial `req` for the Root CA Certificate because the configuration file states `prompt=0` while still having `_default = [default]` in the configuration.
+```
+cp /dev/null ca/tls-ca/db/tls-ca.db
+cp /dev/null ca/tls-ca/db/tls-ca.db.attr
+echo 01 > ca/tls-ca/db/tls-ca.crt.srl
+echo 01 > ca/tls-ca/db/tls-ca.crl.srl
+```
+
+Generate the CSR & Key
+```
+openssl req -new \
+    -config etc/tls-ca.conf \
+    -out ca/tls-ca.csr \
+    -keyout ca/tls-ca/private/tls-ca.key.crt
+```
+
+Generate the CSR With Existing Key
+```
+openssl req -new \
+    -config etc/tls-ca.conf \
+    -out ca/tls-ca.csr \
+    -key ca/tls-ca/private/tls-ca.key.crt
+```
+
+```
+openssl ca \
+    -config etc/root-ca.conf \
+    -in ca/tls-ca.csr \
+    -out ca/tls-ca.crt \
+    -extensions signing_ca_ext
+```
+
+```
+openssl ca -gencrl \
+    -config etc/tls-ca.conf \
+    -out crl/tls-ca.crl
+```
+
+

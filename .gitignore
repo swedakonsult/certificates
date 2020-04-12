@@ -1,3 +1,8 @@
 # IDE files
 *.swp
 .DS_Store
+
+# openssl
+*.csr
+*.pem
+*.old
