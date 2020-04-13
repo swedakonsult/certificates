@@ -6,3 +6,8 @@
 *.csr
 *.pem
 *.old
+
+# private keys
+**/private/*.crt
+**/private/*.key
+**/private/*.pem
