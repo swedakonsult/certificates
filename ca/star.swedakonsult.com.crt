@@ -1,0 +1,110 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 3 (0x3)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=US, O=SwedaKonsult, OU=SwedaKonsult Certificate Authority, CN=SwedaKonsult TLS CA
+        Validity
+            Not Before: Apr 13 03:29:36 2020 GMT
+            Not After : Apr 13 03:29:36 2022 GMT
+        Subject: C=US, ST=Washington, L=Seattle, O=SwedaKonsult, OU=HiJack, CN=*.swedakonsult.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:c0:dd:c9:99:07:51:06:fd:67:87:32:b1:02:98:
+                    e6:62:71:0e:28:fd:9e:15:80:89:c8:f7:a4:99:23:
+                    06:26:19:9a:6b:ca:b2:f7:5f:3b:0f:c6:0d:2a:14:
+                    6e:20:ed:ec:07:cf:05:6e:29:59:6c:fa:3b:35:32:
+                    5d:44:16:4e:41:b1:cb:23:08:5f:39:46:c6:54:84:
+                    86:36:39:c8:72:89:21:65:38:9a:bd:8d:ff:86:72:
+                    ee:71:e7:0f:68:6f:50:19:b1:55:7d:45:e2:5a:17:
+                    5f:3f:85:2d:be:f6:c6:ea:12:f0:3a:d3:78:ae:ed:
+                    df:eb:61:f3:4d:86:06:ed:c4:e4:dc:0b:84:16:51:
+                    a9:e0:c2:aa:60:04:42:af:53:67:99:f3:77:c7:8e:
+                    6f:19:17:8f:72:5c:98:1c:49:c8:fb:8f:b8:a7:27:
+                    13:ae:b4:ff:68:c8:17:c4:9d:f4:e5:45:4e:ce:e5:
+                    96:9c:69:76:c1:eb:66:c4:ef:42:4b:e9:62:ba:71:
+                    da:17:e4:12:99:a5:14:37:2c:64:12:71:cd:81:01:
+                    23:16:cd:1b:06:46:da:dc:d8:22:e7:0a:2b:56:49:
+                    ad:34:c6:b1:65:24:23:09:16:6a:39:18:af:b9:ac:
+                    25:f4:52:dd:93:47:85:bf:2e:73:7c:1b:72:c1:55:
+                    64:b1
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature, Key Encipherment
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Subject Key Identifier: 
+                04:F5:2A:12:95:AF:78:F3:79:F6:2F:84:CA:D1:90:9B:58:B6:FF:E2
+            X509v3 Authority Key Identifier: 
+                keyid:FA:74:EA:FC:A3:CD:4B:FE:51:C7:90:48:42:E4:6A:06:C4:48:F6:49
+
+            Authority Information Access: 
+                CA Issuers - URI:http://www.swedakonsult.com/ca/tls-ca.cer
+
+            X509v3 CRL Distribution Points: 
+
+                Full Name:
+                  URI:http://www.swedakonsult.com/ca/tls-ca.crl
+
+            X509v3 Subject Alternative Name: 
+                DNS:localhost, DNS:bat.bing.com, DNS:ad.doubleclick.net, DNS:googleads.g.doubleclick.net, DNS:www.google-analytics.com, DNS:fonts.googleapis.com, DNS:www.googleadservices.com, DNS:tpc.googlesyndication.com, DNS:assets.adobetm.com, DNS:analytics.twitter.com, DNS:ads.yahoo.com, DNS:log.dmtry.com, DNS:t.co, DNS:c.go-mpulse.com, DNS:www.facebook.com, DNS:5d7e0.v.fwmrm.net, DNS:*.mktoresp.com, DNS:csreport.skype.com, DNS:platform.twitter.com, DNS:connect.facebook.net, DNS:syndication.twitter.com, DNS:c.microsoft.com, DNS:c1.microsoft.com, DNS:tags.tiqcdn.com, DNS:www.googletagservices.com, DNS:api.bazaarvoice.com, DNS:sb.scorecardresearch.com, DNS:ads.adaptv.advertising.com, DNS:ads.stickyadstv.com, DNS:search.spotxchange.com, DNS:www.googletagmanager.com
+    Signature Algorithm: sha1WithRSAEncryption
+         11:e6:1b:dc:9d:d1:01:16:89:18:45:a5:62:17:1f:62:99:74:
+         73:fc:7a:0e:24:28:61:a7:31:33:40:c0:29:20:1f:d0:b7:7b:
+         51:e8:8f:cc:06:98:ae:9a:31:9c:b7:a5:f7:8f:23:ca:a3:eb:
+         7a:74:a5:0f:cd:46:26:92:a7:b4:d2:4c:90:2f:73:5e:62:87:
+         f0:f2:23:46:a6:43:30:d6:0b:a1:c8:c0:0f:0d:8d:4b:a7:81:
+         2d:8b:c0:1a:ba:5a:e3:74:37:9c:aa:6d:3c:63:6c:dd:6f:d7:
+         5d:1e:12:81:60:bd:4c:68:a3:93:86:70:36:f5:04:09:ad:df:
+         cd:e2:b8:2f:67:33:05:7d:22:f1:b0:2e:d1:96:28:b8:93:3b:
+         60:c6:d9:e1:eb:5a:65:5d:78:3b:61:01:b4:ed:72:88:d3:2a:
+         6d:df:cc:be:0e:59:4c:c0:c4:e2:03:0b:79:5e:2e:d3:65:6a:
+         ed:73:a5:b1:b1:0a:97:89:4f:25:7d:72:60:94:50:c4:da:3f:
+         72:f4:d0:91:1a:5f:1f:50:0c:6e:b8:30:84:c0:9e:c8:ff:74:
+         fb:34:e0:0c:dd:ba:46:bb:20:0c:51:68:bd:af:81:f8:3d:c0:
+         95:11:bb:53:37:61:d3:95:0f:6f:9d:30:b5:c8:da:92:67:76:
+         7b:50:ac:2d
+-----BEGIN CERTIFICATE-----
+MIIG6zCCBdOgAwIBAgIBAzANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJVUzEV
+MBMGA1UECgwMU3dlZGFLb25zdWx0MSswKQYDVQQLDCJTd2VkYUtvbnN1bHQgQ2Vy
+dGlmaWNhdGUgQXV0aG9yaXR5MRwwGgYDVQQDDBNTd2VkYUtvbnN1bHQgVExTIENB
+MB4XDTIwMDQxMzAzMjkzNloXDTIyMDQxMzAzMjkzNloweTELMAkGA1UEBhMCVVMx
+EzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFTATBgNVBAoM
+DFN3ZWRhS29uc3VsdDEPMA0GA1UECwwGSGlKYWNrMRswGQYDVQQDDBIqLnN3ZWRh
+a29uc3VsdC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA3cmZ
+B1EG/WeHMrECmOZicQ4o/Z4VgInI96SZIwYmGZpryrL3XzsPxg0qFG4g7ewHzwVu
+KVls+js1Ml1EFk5BscsjCF85RsZUhIY2OchyiSFlOJq9jf+Gcu5x5w9ob1AZsVV9
+ReJaF18/hS2+9sbqEvA603iu7d/rYfNNhgbtxOTcC4QWUangwqpgBEKvU2eZ83fH
+jm8ZF49yXJgcScj7j7inJxOutP9oyBfEnfTlRU7O5ZacaXbB62bE70JL6WK6cdoX
+5BKZpRQ3LGQScc2BASMWzRsGRtrc2CLnCitWSa00xrFlJCMJFmo5GK+5rCX0Ut2T
+R4W/LnN8G3LBVWSxAgMBAAGjggOGMIIDgjAOBgNVHQ8BAf8EBAMCBaAwCQYDVR0T
+BAIwADATBgNVHSUEDDAKBggrBgEFBQcDATAdBgNVHQ4EFgQUBPUqEpWvePN59i+E
+ytGQm1i2/+IwHwYDVR0jBBgwFoAU+nTq/KPNS/5Rx5BIQuRqBsRI9kkwRQYIKwYB
+BQUHAQEEOTA3MDUGCCsGAQUFBzAChilodHRwOi8vd3d3LnN3ZWRha29uc3VsdC5j
+b20vY2EvdGxzLWNhLmNlcjA6BgNVHR8EMzAxMC+gLaArhilodHRwOi8vd3d3LnN3
+ZWRha29uc3VsdC5jb20vY2EvdGxzLWNhLmNybDCCAosGA1UdEQSCAoIwggJ+ggls
+b2NhbGhvc3SCDGJhdC5iaW5nLmNvbYISYWQuZG91YmxlY2xpY2submV0ghtnb29n
+bGVhZHMuZy5kb3VibGVjbGljay5uZXSCGHd3dy5nb29nbGUtYW5hbHl0aWNzLmNv
+bYIUZm9udHMuZ29vZ2xlYXBpcy5jb22CGHd3dy5nb29nbGVhZHNlcnZpY2VzLmNv
+bYIZdHBjLmdvb2dsZXN5bmRpY2F0aW9uLmNvbYISYXNzZXRzLmFkb2JldG0uY29t
+ghVhbmFseXRpY3MudHdpdHRlci5jb22CDWFkcy55YWhvby5jb22CDWxvZy5kbXRy
+eS5jb22CBHQuY2+CD2MuZ28tbXB1bHNlLmNvbYIQd3d3LmZhY2Vib29rLmNvbYIR
+NWQ3ZTAudi5md21ybS5uZXSCDioubWt0b3Jlc3AuY29tghJjc3JlcG9ydC5za3lw
+ZS5jb22CFHBsYXRmb3JtLnR3aXR0ZXIuY29tghRjb25uZWN0LmZhY2Vib29rLm5l
+dIIXc3luZGljYXRpb24udHdpdHRlci5jb22CD2MubWljcm9zb2Z0LmNvbYIQYzEu
+bWljcm9zb2Z0LmNvbYIPdGFncy50aXFjZG4uY29tghl3d3cuZ29vZ2xldGFnc2Vy
+dmljZXMuY29tghNhcGkuYmF6YWFydm9pY2UuY29tghhzYi5zY29yZWNhcmRyZXNl
+YXJjaC5jb22CGmFkcy5hZGFwdHYuYWR2ZXJ0aXNpbmcuY29tghNhZHMuc3RpY2t5
+YWRzdHYuY29tghZzZWFyY2guc3BvdHhjaGFuZ2UuY29tghh3d3cuZ29vZ2xldGFn
+bWFuYWdlci5jb20wDQYJKoZIhvcNAQEFBQADggEBABHmG9yd0QEWiRhFpWIXH2KZ
+dHP8eg4kKGGnMTNAwCkgH9C3e1Hoj8wGmK6aMZy3pfePI8qj63p0pQ/NRiaSp7TS
+TJAvc15ih/DyI0amQzDWC6HIwA8NjUungS2LwBq6WuN0N5yqbTxjbN1v110eEoFg
+vUxoo5OGcDb1BAmt383iuC9nMwV9IvGwLtGWKLiTO2DG2eHrWmVdeDthAbTtcojT
+Km3fzL4OWUzAxOIDC3leLtNlau1zpbGxCpeJTyV9cmCUUMTaP3L00JEaXx9QDG64
+MITAnsj/dPs04Azduka7IAxRaL2vgfg9wJURu1M3YdOVD2+dMLXI2pJndntQrC0=
+-----END CERTIFICATE-----

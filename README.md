@@ -88,6 +88,7 @@ openssl req -new \
     -key ca/tls-ca/private/tls-ca.key.crt
 ```
 
+Sign the TLS CA Certificate
 ```
 openssl ca \
     -config etc/root-ca.conf \
@@ -96,10 +97,46 @@ openssl ca \
     -extensions signing_ca_ext
 ```
 
+Create a Revocation List
 ```
 openssl ca -gencrl \
     -config etc/tls-ca.conf \
     -out crl/tls-ca.crl
 ```
 
+Validate the Revocation List
+```
+openssl crl -in crl/tls-ca.crl -noout -text
+```
 
+## *.swedakonsult.com SAN Certificate
+
+```
+mkdir -p ca/star.swedakonsult.com/private
+chmod 700 ca/star.swedakonsult.com/private
+```
+
+Generate the CSR & Key
+```
+openssl req -new \
+    -config etc/star.swedakonsult.com.conf \
+    -out ca/star.swedakonsult.com.csr \
+    -keyout ca/star.swedakonsult.com/private/star.swedakonsult.com.key.crt
+```
+
+Generate the CSR With Existing Key
+```
+openssl req -new \
+    -config etc/tls-server.conf \
+    -out ca/star.swedakonsult.com.csr \
+    -key ca/star.swedakonsult.com/private/star.swedakonsult.com.key.crt
+```
+
+Sign the SAN Certificate
+```
+openssl ca \
+    -config etc/tls-ca.conf \
+    -in ca/star.swedakonsult.com.csr \
+    -out ca/star.swedakonsult.com.crt \
+    -extensions server_ext
+```
